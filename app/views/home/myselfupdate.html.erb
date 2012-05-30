@@ -10,15 +10,15 @@
 		</tr>
 		<tr>
 			<th>Born in</th>
-			<td><p><%= current_user.born_city %> ( <%= current_user.born_country %> )</p></td>
+			<td><p><%= params[:user][:born_city] %> ( <%= params[:user][:born_country] %> )</p></td>
 		</tr>
 		<tr>
 			<th>Live in</th>
-			<td><p><%= current_user.living_city %> ( <%= current_user.living_country %> )</p></td>
+			<td><p><%= params[:user][:living_city] %> ( <%= params[:user][:living_country] %> )</p></td>
 		</tr>
 		<tr>
 			<th>Biography</th>
-			<td><%= current_user.biography%></td>
+			<td><%= params[:user][:biography]%></td>
 		</tr>
 	</table>
 
