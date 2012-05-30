@@ -9,15 +9,15 @@
 	<%@mesg.each do |f|%>
 		<table class="curvedEdges" cellspacing=5 width="500">
 			<tr>
-				<th width="100">From : </th>
+				<th width="100">From  </th>
 				<td><%= @sender[i] %></td>
 			</tr>
 			<tr>
-				<th width="100">Message : </th>
+				<th width="100">Message  </th>
 				<td><%=f.message %></td>
 			</tr>
 			<tr>
-				<th width="100">Date posted :</th>
+				<th width="100">Date posted </th>
 				<td><%= f.created_at %></td>
 			</tr>
 		</table>
