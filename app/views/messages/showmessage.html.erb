@@ -7,7 +7,7 @@
 			<th width=150>Name</th><th width=150>No of Messages</th><th>Message</th>
 		</tr>
 		<% i=0 %>
-		<% @msg.present? %>
+		<% if @msg.present? %>
 		<% @msg.each do |m| %>
 		<tr>
 			<td> <%= @name[i] %> </td>
