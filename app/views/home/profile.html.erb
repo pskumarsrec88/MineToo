@@ -1,0 +1,97 @@
+<script src="/javascripts/live.js"></script>
+
+<%=form_for :user, :url=>{:action=>'profilesession', :controller=>'home'} do |f|%>
+
+<div style="position:absolute; left:50px; top:100px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
+<h2>Join MineToo</h2>
+<p>Joining Minetoo is easy. First add your details below. Then the interesting part. You'll pick<br>the qualities that best describe you and write a few words about yourself.<br><br>
+Will your description of yourself match up with others who share your birthday? <br>You're about to find out. </p>
+</div>
+
+<div style="position:absolute; left:30px; top:250px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
+<table cellspacing=15>
+	<tr>
+		<th>Your Birthdate</th>
+		<td><%= f.datepicker :date_of_birth, :id=>"datepicker", "size"=>23 %></td>
+	</tr>
+	<tr>
+		<th>Your Name</th>
+		<td><%= f.text_field :name, "size"=>23 %></td>
+	</tr>
+	<tr>
+		<th>Your Email Address</th>
+		<td><%= f.text_field :email , "size"=>23 %></td><td><p class="alert"><font color="red"><%= alert %></font></p></td>
+	</tr>
+	<tr>
+		<th>Sex</th>
+		<td><%= f.radio_button :sex, 'male', :checked => true %>
+		<%= label :male, 'Male' %>
+		<%= f.radio_button :sex, 'Female' %> 
+		<%= label :female, 'Female' %> </td>
+	</tr>
+	<tr>
+		<th>Hour of Birth</th>
+		<td><%= f.select :hour_of_birth, options_for_select(['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12noon', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'], {:include_blank => 'None'}) %></td>
+	</tr>
+	<tr>
+		<th>Where do you live?</th>
+		<td>Town/City <%= f.text_field :living_city, "size"=>15%></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>Country <%= f.country_select :living_country %></td>
+	</tr>
+	<tr>
+		<th>Where do you Born?</th>
+		<td>Town/City <%= f.text_field :born_city, "size"=>15%></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>Country <%= f.country_select :born_country %></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>I accept the Minetoo <%= link_to 'Terms and Conditions',terms_path, :onclick=>"window.open(this.href,'Terms and Conditions', 'height=600, width=600');return false;" %><%= f.check_box :term_condition %></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><%= f.submit "Next" %></td>
+	</tr>
+	
+</table>
+</div>
+<% end %>
+
+<DIV id=u68 style="position:absolute; left:20px; top:760px; width:570px; height:48px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+After you click the Next button, we'll send you an email with a link to click to confirm your address. Remember, we will never reveal your email address to other users or publish it on this site. ... Welcome to the rapidly growing, worldwide, Minetoo community.
+</DIV>
+
+
+<script>
+	$(function() {
+		$( "#datepicker" ).datepicker(
+		{
+			changeMonth: true,
+			changeYear: true
+		});
+	});
+</script>
+        
+
+<script>
+var f1 = new LiveValidation('datepicker', {onlyOnSubmit: true });
+f1.add( Validate.Presence );
+var f2 = new LiveValidation('user_name', {onlyOnSubmit: true });
+f2.add( Validate.Presence );
+var f3 = new LiveValidation('user_email', {onlyOnSubmit: true });
+f3.add( Validate.Presence );
+f3.add( Validate.Email );
+var f4 = new LiveValidation('user_living_city', {onlyOnSubmit: true });
+f4.add( Validate.Presence );
+var f5 = new LiveValidation('user_born_city', {onlyOnSubmit: true });
+f5.add( Validate.Presence );
+var f7 = new LiveValidation('user_term_condition', {onlyOnSubmit: true });
+f7.add( Validate.Acceptance );
+</script>
+
+

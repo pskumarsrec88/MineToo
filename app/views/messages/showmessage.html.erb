@@ -1,0 +1,22 @@
+
+<div style="position:absolute; left:30px; top:100px; width:570px; text-align: left ; font-family:'Arial'; font-size:11pt; " >
+	<h3>Messages</h3>
+	<p>These are the Minetoo Members you've exchanged messages with.</p>
+	<table cellspacing=10>
+		<tr>
+			<th width=150>Name</th><th width=150>No of Messages</th><th>Message</th>
+		</tr>
+		<% i=0 %>
+		<% @msg.present? %>
+		<% @msg.each do |m| %>
+		<tr>
+			<td> <%= @name[i] %> </td>
+			<td> <%= @msg_count[i] %> </td>
+			<td> <%= link_to "View and send replies...","/aftershow/#{m}" %> </td>
+		</tr>	
+		<%i=i+1 %>		
+		<% end %>
+		<% end %>
+	</table>		
+</div>
+

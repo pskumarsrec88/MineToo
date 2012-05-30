@@ -1,0 +1,48 @@
+
+<div style="position:absolute; left:50px; top:115px; text-align: left ; font-family:'Arial'; font-size:10pt;" >
+<h2>Myself</h2>
+
+<%=form_for :user, :url=>{:action=>'myselfupdate', :controller=>'home'} do |f|%>
+<%= f.error_messages %>
+	<p>Choose when you'd like us to contact you.</p>
+	<table class="curvedEdges" cellspacing=10 width=500>		
+		<tr>
+			<th></th>
+			<td>Where do you live?.</td>
+		</tr>
+		<tr>
+			<th>Town/City</th>
+			<td><%= f.text_field :living_city, "size" => 15%></td>
+		</tr>
+		<tr>
+			<th>Country</th>
+			<td><%= f.country_select :living_country %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>Where were you born?.</td>
+		</tr>
+		<tr>
+			<th>Town/City</th>
+			<td><%= f.text_field :born_city, "size" => 15%></td>
+		</tr>
+		<tr>
+			<th>Country</th>
+			<td><%= f.country_select :born_country %></td>
+		</tr>
+		<tr>
+			<th>Biography</th>
+			<td><%=f.text_area :biography, :rows=>10, :cols=>40%></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit "Save Changes"%></td>
+		</tr>
+	</table>
+<% end %>
+</div>
+
+
+<style type="text/css">
+table.curvedEdges { border:3px solid #98FB98; }
+</style>
