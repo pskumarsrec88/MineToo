@@ -26,10 +26,11 @@ class HomeController < ApplicationController
 	@a=User.find_by_email(params[:user][:email])
 	if @a.present?
 		flash[:alert] = "Email already taken"
-		render :profile
+		redirect_to "/signupprofile"
+	else
+		session[:value]={:name=>params[:user][:name], :date_of_birth=>params[:user][:date_of_birth], :email=>params[:user][:email], :sex=>params[:user][:sex], :hour_of_birth=>params[:user][:hour_of_birth], :living_city=>params[:user][:living_city], :living_country=>params[:user][:living_country], :born_city=>params[:user][:born_city], :born_country=>params[:user][:born_country]}
+		redirect_to "/signupquality"
 	end
-	session[:value]={:name=>params[:user][:name], :date_of_birth=>params[:user][:date_of_birth], :email=>params[:user][:email], :sex=>params[:user][:sex], :hour_of_birth=>params[:user][:hour_of_birth], :living_city=>params[:user][:living_city], :living_country=>params[:user][:living_country], :born_city=>params[:user][:born_city], :born_country=>params[:user][:born_country]}
-	redirect_to "/signupquality"
   end
 
   #registration/quality
