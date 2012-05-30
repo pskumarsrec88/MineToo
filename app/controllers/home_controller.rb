@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+2class HomeController < ApplicationController
 	
   before_filter :authenticate_user!, :except => [:home, :homenotlogin, :profile, :quality, :sessions, :tellfriend, :invite, :profilesession]
   
