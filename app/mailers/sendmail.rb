@@ -9,6 +9,6 @@ class Sendmail < ActionMailer::Base
        mail(:to=>contact[:to], :subject=>contact[:subject], :body=>contact[:message])
   end
   def sendpassword(email,password)
-       mail(:to=>email, :subject=>"MineToo Username & Password", :body=>"Welcome to Minetoo. Your MineToo     user name : "+email+" and     password : "+password)
+       mail(:to=>email, :subject=>"MineToo Username & Password", :body=>"Welcome to Minetoo. Your MineToo user name : "+email+" and password : "+password)
   end
 end
