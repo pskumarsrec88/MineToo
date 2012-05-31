@@ -3,7 +3,7 @@
 <h3>Messages you received from <%= @name %></h3>
 <%=link_to "Send reply message to #{@name}...", "/sendmessage/#{@sender}"%>
 <br>
-<% @msg.present? %>
+<% if @msg.present? %>
 <%@msg.each do |mesg|%>
 <br>
 <table class="curvedEdges">
