@@ -28,11 +28,11 @@
 	<%@user.each do |u|%>
 		<% unless u.id==current_user.id %>
 		<br><br><br><br><br><br><br>
-		<div style="position:absolute; left:20px; text-align: left ; " >
+		<div style="position:absolute; text-align: left ; " >
 		<span style=" font-family:'Arial'; font-size:11pt;">
 		<table>
 			<tr>
-				<th colspan=4><u><%=u.name%></u></th>
+				<th><u><%=u.name%></u></th>
 			</tr>
 			<tr>
 				<th>Sex : </th>
@@ -56,7 +56,7 @@
 			</tr>
 			<tr>
 				<th>Biography :</th>
-				<td colspan=3>
+				<td>
 					<%unless current_user%>
 						<%=link_to "Join",signupprofile_path%><%=" to see which qualities this person used to describe themselves.."%>
 					<%else%>
