@@ -7,7 +7,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<DIV style="position:absolute; left:100px; ">
   <% if user_signed_in? %>
     <%= render :partial => "layouts/signin" %>
   <% else %>
@@ -15,5 +15,7 @@
   <% end %>
   
   <%= yield %>
+  
+</DIV>
 </body>
 </html>
