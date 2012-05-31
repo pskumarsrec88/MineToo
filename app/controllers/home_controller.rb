@@ -11,10 +11,10 @@ class HomeController < ApplicationController
 		#a=@dob.split('/')		
 		#@dobs=a[2]+"-"+a[0]+"-"+a[1]
 		@user=User.find_all_by_date_of_birth(@dob)	
-	else
+	  else
 			flash[:alert] = "Please select Date of birth"
 			render :home
-	end
+	  end
   end
 
   #registration/profile

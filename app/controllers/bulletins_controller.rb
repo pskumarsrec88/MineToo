@@ -20,6 +20,7 @@ class BulletinsController < ApplicationController
 	end
 	
 	def showbulletin
+		
 		find
 	end
 	
