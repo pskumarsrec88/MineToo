@@ -25,8 +25,9 @@
 		<DIV style="position:absolute; left:20px; top:270px; " >Click the <%=link_to "Join",signupprofile_path%> button to get started. It's fast and it's fun</div>
 	<%end%>
 	<br><br><br><br>
-	<%@user.each do |u|%><br><br><br><br><br><br><br>
+	<%@user.each do |u|%>
 		<% unless u.id==current_user.id %>
+		<br><br><br><br><br><br><br>
 		<div style="position:absolute; left:20px; text-align: left ; " >
 		<span style=" font-family:'Arial'; font-size:11pt;">
 		<table>

@@ -14,13 +14,13 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource    
     if resource.save
       set_flash_message :notice, :signed_up
-      last = User.last
-      last.qualities=session[:qualities]
-      last.new_member_notification="1"
-      last.private_message_notification="1"
-      last.offers_notification="1"
-      last.save
       redirect_to "/users/confirmation/new"
+      @user = User.find_by_email(resource.email)
+      @user.qualities=session[:qualities]
+      @user.new_member_notification="1"
+      @user.private_message_notification="1"
+      @user.offers_notification="1"
+      @user.save
       Sendmail.sendpassword(resource.email,resource.qualities).deliver
       #sign_in_and_redirect(resource_name, resource)
     else
