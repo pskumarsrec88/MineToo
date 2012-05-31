@@ -28,9 +28,9 @@
 	<%@user.each do |u|%>
 		<% unless u.id==current_user.id %>
 		<br><br><br><br><br><br><br>
-		<div style="position:absolute; text-align: left ; " >
+		<div style="position:absolute; left:20px; text-align:left ; " >
 		<span style=" font-family:'Arial'; font-size:11pt;">
-		<table>
+		<table cellspacing=5 width=400>
 			<tr>
 				<th><u><%=u.name%></u></th>
 			</tr>
