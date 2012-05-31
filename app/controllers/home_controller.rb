@@ -8,8 +8,6 @@ class HomeController < ApplicationController
   def homenotlogin
 	  unless params[:date_of_birth].empty?
 		@dob=params[:date_of_birth]
-		#a=@dob.split('/')		
-		#@dobs=a[2]+"-"+a[0]+"-"+a[1]
 		@user=User.find_all_by_date_of_birth(@dob)	
 	  else
 			flash[:alert] = "Please select Date of birth"

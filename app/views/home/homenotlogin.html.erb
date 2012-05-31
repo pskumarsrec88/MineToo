@@ -1,4 +1,4 @@
-<h2>Birthdays on <%=@dob%></h2><br>
+
 <%if @user.empty?%>
 	<DIV style="position:absolute; left:40px; top:145px; " ><h4>We have no Minetoo matches for you</h4></div>
 	<DIV style="position:absolute; left:40px; top:200px; width:500px; height:60px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
@@ -12,7 +12,7 @@
 	<%end%>
 	<div style="position:absolute; left:100px; top:350px; " ><%=link_to "Click here to search again",home_path%> </div>
 <%else%>
-	<div style="position:absolute; left:20px; top:115px; " ><h4>We have <%= @user.length-1 %> Minetoo matches for you</h4></div>
+	<div style="position:absolute; left:20px; top:115px; " ><h4>We have <%= @user.length %> Minetoo matches on <%=@dob%></h4></div>
 	<DIV style="position:absolute; left:20px; top:170px; width:430px; height:60px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
 		<span style=" font-family:'Arial'; color:#000000; font-size:11pt;">By joining Minetoo, you will discover whether the qualities you are about to choose to describe yourself match those already selected by the people listed here. You share a birthday. Now find out what else you have in common. </span>
 	</DIV>
@@ -24,9 +24,8 @@
 	<%unless current_user%>
 		<DIV style="position:absolute; left:20px; top:270px; " >Click the <%=link_to "Join",signupprofile_path%> button to get started. It's fast and it's fun</div>
 	<%end%>
-	<br><br><br><br>
+	<br><br><br><br><br><br><br><br><br>
 	<%@user.each do |u|%>
-		<% unless u.id==current_user.id %>
 		<br><br><br><br><br><br><br>
 		<div style="position:absolute; left:20px; text-align: left ; " >
 		<span style=" font-family:'Arial'; font-size:11pt;">
@@ -67,7 +66,6 @@
 		</table>
 		</span>
 		</div>
-		<%end%>
 	<%end%>
 <%end%>
 
