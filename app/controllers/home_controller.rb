@@ -6,11 +6,11 @@ class HomeController < ApplicationController
   end
   
   def homenotlogin
-	  unless params[:user][:date_of_birth].empty?
-		@dob=params[:user][:date_of_birth]
-		a=@dob.split('/')		
-		@dobs=a[2]+"-"+a[0]+"-"+a[1]
-		@user=User.find_all_by_date_of_birth(@dobs)	
+	  unless params[:date_of_birth].empty?
+		@dob=params[:date_of_birth]
+		#a=@dob.split('/')		
+		#@dobs=a[2]+"-"+a[0]+"-"+a[1]
+		@user=User.find_all_by_date_of_birth(@dob)	
 	else
 			flash[:alert] = "Please select Date of birth"
 			render :home
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 		flash[:alert] = "Email already taken"
 		redirect_to "/signupprofile"
 	else
-		session[:value]={:name=>params[:user][:name], :date_of_birth=>params[:user][:date_of_birth], :email=>params[:user][:email], :sex=>params[:user][:sex], :hour_of_birth=>params[:user][:hour_of_birth], :living_city=>params[:user][:living_city], :living_country=>params[:user][:living_country], :born_city=>params[:user][:born_city], :born_country=>params[:user][:born_country]}
+		session[:value]={:name=>params[:user][:name], :date_of_birth=>params[:date_of_birth], :email=>params[:user][:email], :sex=>params[:user][:sex], :hour_of_birth=>params[:user][:hour_of_birth], :living_city=>params[:user][:living_city], :living_country=>params[:user][:living_country], :born_city=>params[:user][:born_city], :born_country=>params[:user][:born_country]}
 		redirect_to "/signupquality"
 	end
   end

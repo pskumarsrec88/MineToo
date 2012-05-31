@@ -1,5 +1,8 @@
 <script src="/javascripts/live.js"></script>
-
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+   
 <%=form_for :user, :url=>{:action=>'profilesession', :controller=>'home'} do |f|%>
 
 <div style="position:absolute; left:50px; top:100px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
@@ -12,7 +15,7 @@ Will your description of yourself match up with others who share your birthday? 
 <table cellspacing=15>
 	<tr>
 		<th>Your Birthdate</th>
-		<td><%= f.datepicker :date_of_birth, :id=>"datepicker", "size"=>23 %></td>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth"></td>
 	</tr>
 	<tr>
 		<th>Your Name</th>
@@ -66,21 +69,21 @@ Will your description of yourself match up with others who share your birthday? 
 After you click the Next button, we'll send you an email with a link to click to confirm your address. Remember, we will never reveal your email address to other users or publish it on this site. ... Welcome to the rapidly growing, worldwide, Minetoo community.
 </DIV>
 
-
 <script>
-	$(function() {
-		$( "#datepicker" ).datepicker(
-		{
+     $(function() {
+             $( ".datepick" ).datepicker(
+	     { 
+			dateFormat: 'yy-mm-dd',
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "-60:+0 "
-		});
-	});
+	     
+	     }); 
+     });
 </script>
-        
-
+  
 <script>
-var f1 = new LiveValidation('datepicker', {onlyOnSubmit: true });
+var f1 = new LiveValidation('date_of_birth', {onlyOnSubmit: true });
 f1.add( Validate.Presence );
 var f2 = new LiveValidation('user_name', {onlyOnSubmit: true });
 f2.add( Validate.Presence );
