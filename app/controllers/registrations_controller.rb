@@ -22,7 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
       @user.offers_notification="1"
       @user.save
       email=resource.email
-      password=resource.qualities.to_s
+      password=resource.term_condition.to_s
       Sendmail.sendpassword(email,password).deliver
       #sign_in_and_redirect(resource_name, resource)
     else
