@@ -16,9 +16,8 @@ Please write at least four sentences about yourself.<br><br><br>
 <%=f.hidden_field :living_country, :value=>session[:value][:living_country]%>
 <%=f.hidden_field :born_city, :value=>session[:value][:born_city]%>
 <%=f.hidden_field :born_country, :value=>session[:value][:born_country]%>
-<%=f.hidden_field :password, :value=>password%>
+<%=f.hidden_field :password, :value=>session[:password]%>
 <%= f.hidden_field :password_confirmation, :value=>session[:password]%><br>
-<%=f.hidden_field :term_condition, :value=>session[:password]%>
 <%= f.submit "Next" %>
 <% end %>
 </div>
