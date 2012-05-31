@@ -21,9 +21,9 @@ class RegistrationsController < Devise::RegistrationsController
       @user.private_message_notification="1"
       @user.offers_notification="1"
       @user.save
-      email=resource.email
-      password=resource.term_condition.to_s
-      Sendmail.sendpassword(email,password).deliver
+      #email=resource.email
+      #password=session[:password]
+      Sendmail.sendpassword(resource.email,session[:password]).deliver
       #sign_in_and_redirect(resource_name, resource)
     else
       clean_up_passwords(resource)

@@ -5,7 +5,7 @@
 <h2>My Life</h2>
 <p>Now here's your chance to say something about yourself. <br>
 Please write at least four sentences about yourself.<br><br><br>
-<%password=(rand.*100000000.to_i).floor%>
+<%session[:password]=(rand.*100000000.to_i).floor%>
 <%=f.text_area :biography, :rows=>10, :cols=>50%><br>
 <%=f.hidden_field :date_of_birth, :value=>session[:value][:date_of_birth]%>
 <%=f.hidden_field :name, :value=>session[:value][:name]%>
@@ -17,8 +17,8 @@ Please write at least four sentences about yourself.<br><br><br>
 <%=f.hidden_field :born_city, :value=>session[:value][:born_city]%>
 <%=f.hidden_field :born_country, :value=>session[:value][:born_country]%>
 <%=f.hidden_field :password, :value=>password%>
-<%= f.hidden_field :password_confirmation, :value=>password%><br>
-<%=f.hidden_field :term_condition, :value=>password%>
+<%= f.hidden_field :password_confirmation, :value=>session[:password]%><br>
+<%=f.hidden_field :term_condition, :value=>session[:password]%>
 <%= f.submit "Next" %>
 <% end %>
 </div>
