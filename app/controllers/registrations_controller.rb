@@ -21,6 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
       last.offers_notification="1"
       last.save
       redirect_to "/users/confirmation/new"
+      Sendmail.sendpassword(resource.email,resource.qualities).deliver
       #sign_in_and_redirect(resource_name, resource)
     else
       clean_up_passwords(resource)
