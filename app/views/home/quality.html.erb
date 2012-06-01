@@ -3,6 +3,8 @@
 <br><h5>Select between four and ten qualities which best describe you. Your choices cannot be changed later. <br>Choose carefully. If you dare, get a friend or partner to choose some for you!</h5>
 Please select 4 and 10 qualities from the list
 <br>
+<p class="alert"><font color="red"><%= alert %></font></p>
+<br>
 <%=form_for :user, :url=>{:action=>'sessions', :controller=>'home'} do |f|%>
 	<% count=1 %>
 	<table cellspacing=10>

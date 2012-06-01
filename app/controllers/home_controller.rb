@@ -39,14 +39,16 @@ class HomeController < ApplicationController
   #registration/sessions
   def sessions
 	session[:qualities]=Array.new
+	if params[:user].present?
 	params[:user].values.each do |a|	
 		session[:qualities]<<a     
+	end
 	end
 	len=session[:qualities].length
 	if len>=4 and len<=10
 		redirect_to :controller=>"registrations", :action=>"new" 
 	else
-		flash[:alert] = "Empty message not allowed"
+		flash[:alert] = "Must select 4 to 10 qualities"
 		redirect_to "/signupquality"
 	end
   end
