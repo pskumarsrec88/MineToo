@@ -77,30 +77,36 @@ function validateform(f){
      f.tell_your_email.focus();
      return false;
   }
-  var pattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
-  var femail=f.tell_email.value;
-  if(pattern.test(femail))
-  {
-
-  }
-  else
+  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+  var fmail=f.tell_email.value;
+  if(empattern.test(fmail)){}else
   {
       alert("Enter vaild friend email ");
       f.tell_email.focus();
       return false;
   }
-  var yemail=f.tell_your_email.value;
-  if(pattern.test(yemail))
-  {
-
-  }
-  else
+  var ymail=f.tell_your_email.value;
+  if(empattern.test(ymail)){}else
   {
       alert("Enter your vaild email ");
       f.tell_your_email.focus();
       return false;
   }
-  
+  var npattern = /^[a-zA-Z]{2,15}$/;
+  var fname=f.tell_name.value;
+  if(npattern.test(fname)){}else
+  {
+      alert("Name does not have Numbers");
+      f.tell_name.focus();
+      return false;
+  }
+  var yname=f.tell_your_name.value;
+  if(npattern.test(yname)){}else
+  {
+      alert("Your Name does not have Numbers");
+      f.tell_your_name.focus();
+      return false;
+  }
 
 }
 </script>
