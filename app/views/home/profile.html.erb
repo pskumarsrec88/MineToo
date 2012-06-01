@@ -1,7 +1,7 @@
-<script src="/javascripts/live.js"></script>
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
-  
-<%=form_for :user, :url=>{:action=>'profilesession', :controller=>'home'} do |f|%>
+<script src="/javascripts/live.js"></script>
+
+<%=form_for :user, :url=>{:action=>'profilesession', :controller=>'home'}, :html=>{:onsubmit=>"return validateform(this)"} do |f|%>
 
 <div style="position:absolute; left:50px; top:100px; text-align: left ; font-family:Arial; text-align:left; font-size: 10pt;" >
 <h2>Join MineToo</h2>
@@ -52,7 +52,7 @@ Will your description of yourself match up with others who share your birthday? 
 	</tr>
 	<tr>
 		<th></th>
-		<td>I accept the Minetoo <%= link_to 'Terms and Conditions',terms_path, :onclick=>"window.open(this.href,'Terms and Conditions', 'height=600, width=600');return false;" %><%= f.check_box :term_condition %></td>
+		<td><%= f.check_box :term_condition %> I accept the Minetoo <%= link_to 'Terms and Conditions',terms_path, :onclick=>"window.open(this.href,'Terms and Conditions', 'height=600, width=600');return false;" %></td>
 	</tr>
 	<tr>
 		<th></th>
@@ -80,20 +80,61 @@ After you click the Next button, we'll send you an email with a link to click to
      });
 </script>
   
-<script>
-var f1 = new LiveValidation('date_of_birth', {onlyOnSubmit: true });
-f1.add( Validate.Presence );
-var f2 = new LiveValidation('user_name', {onlyOnSubmit: true });
-f2.add( Validate.Presence );
-var f3 = new LiveValidation('user_email', {onlyOnSubmit: true });
-f3.add( Validate.Presence );
-f3.add( Validate.Email );
-var f4 = new LiveValidation('user_living_city', {onlyOnSubmit: true });
-f4.add( Validate.Presence );
-var f5 = new LiveValidation('user_born_city', {onlyOnSubmit: true });
-f5.add( Validate.Presence );
-var f7 = new LiveValidation('user_term_condition', {onlyOnSubmit: true });
-f7.add( Validate.Acceptance );
+  
+  
+<script type="text/javascript">
+function validateform(f)
+{
+  if (f.date_of_birth.value=="")
+  {
+     alert("You must select Date of birth");
+     f.date_of_birth.focus();
+     return false;
+  }
+  if (f.user_name.value=="")
+  {
+     alert("You must enter your name");
+     f.user_name.focus();
+     return false;
+  }
+  var npattern = /^[a-zA-Z]{4,127}$/;
+  var fname=f.user_name.value;
+  if(npattern.test(fname)){}else
+  {
+      alert("Name must have atleast 3 characters and no Numeric values allowed");
+      f.user_name.focus();
+      return false;
+  }
+  if (f.user_email.value=="")
+  {
+     alert("You must enter your email ");
+     f.user_email.focus();
+     return false;
+  }
+  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+  var fmail=f.user_email.value;
+  if(empattern.test(fmail)){}else
+  {
+      alert("Enter vaild friend email ");
+      f.user_email.focus();
+      return false;
+  }
+  if (f.user_living_city.value=="")
+  {
+     alert("You must enter your living city name");
+     f.user_living_city.focus();
+     return false;
+  }
+  if (f.user_born_city.value=="")
+  {
+     alert("You must enter your born city name");
+     f.user_born_city.focus();
+     return false;
+  }
+  
+}
+var f1 = new LiveValidation('user_term_condition', {onlyOnSubmit: true });
+f1.add( Validate.Acceptance );
 </script>
-
-
+  
+  
