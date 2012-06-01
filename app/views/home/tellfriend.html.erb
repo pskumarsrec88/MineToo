@@ -1,4 +1,17 @@
 <script src="/javascripts/live.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+<script>
+     $(function() {
+             $( ".datepick" ).datepicker(
+	     { 
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-60:+0 "
+	     
+	     }); 
+     });
+   </script>
 
 <div style="position:absolute; left:20px; top:100px; text-align: left ; font-family:'Arial'; font-size:11pt;" >
 <h2>Tell a friend</h2>
@@ -15,7 +28,7 @@
 	</tr>
 	<tr>
 		<td>Birth date (optional)</td>
-		<td><%= text_field :tell,  :birthdate, "size" => 20 %></td>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth"></td>
 	</tr>
 	<tr>
 		<th>Message (optional)</th>

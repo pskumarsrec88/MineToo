@@ -1,17 +1,5 @@
-
-<DIV id=u36 style="position:absolute; left:15px; top:175px; width:500px; height:85px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
-<DIV id=u36_rtf><span style=" font-family:'Verdana'; color:#000000; font-size:14pt;"><i>Who shares your birthday?<br>&nbsp; &nbsp;&nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Are they closer than you think?</i></span></DIV></DIV>
-<DIV id=u37 style="position:absolute; left:180px; top:341px; width:160px; height:15px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
-<DIV id=u37_rtf><span style=" color:#3366FF; font-size:9pt;">ENTER&nbsp; YOUR&nbsp; BIRTHDATE</span></DIV></DIV>
-
-<%=form_for :user, :url=>{:action=>"homenotlogin", :controller=>'home'} do |f| %>
-	
-   <DIV id=u2 style="position:absolute; left:130px; top:365px; width:90px; height:16px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
-   <span style=" font-family:'Arial'; color:#000000; font-size:10pt;">
-   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
-   <script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
+<script>
      $(function() {
              $( ".datepick" ).datepicker(
 	     { 
@@ -22,15 +10,22 @@
 	     
 	     }); 
      });
-   </script>
-
-   <input type="text" class="datepick" id="date_of_birth" name="date_of_birth">
-   <p class="alert"><font color="red"><%= alert %></font></p>
-   </span>
-   </DIV>
+</script>
    
+<DIV id=u36 style="position:absolute; left:15px; top:175px; width:500px; height:85px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u36_rtf><span style=" font-family:'Verdana'; color:#000000; font-size:14pt;"><i>Who shares your birthday?<br>&nbsp; &nbsp;&nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Are they closer than you think?</i></span></DIV></DIV>
+<DIV id=u37 style="position:absolute; left:180px; top:341px; width:160px; height:15px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+<DIV id=u37_rtf><span style=" color:#3366FF; font-size:9pt;">ENTER&nbsp; YOUR&nbsp; BIRTHDATE</span></DIV></DIV>
+
+<%=form_for :user, :url=>{:action=>"homenotlogin", :controller=>'home'} do |f| %>
+	
+   <DIV id=u2 style="position:absolute; left:130px; top:365px; width:90px; height:16px; ; ; text-align: left ; font-family:Arial; text-align:left;" >
+     <span style=" font-family:'Arial'; color:#000000; font-size:10pt;">
+     <input type="text" class="datepick" id="date_of_birth" name="date_of_birth">
+     <p class="alert"><font color="red"><%= alert %></font></p>
+     </span>
+   </DIV>
    <%= f.submit 'Go', :style=>"position:absolute; left:400px; top:422px; width:40px; height:40px; color:#3366FF; overflow:visible" %>
-        
 <% end %>
 
 <DIV id=u43 style="position:absolute; left:371px; top:522px; width:100px; height:16px; ; ; text-align: left ; font-family:Arial; text-align:left;" >

@@ -7,7 +7,7 @@
 	</DIV>
 	<%unless current_user%>
 		<%=form_for :join, :url=>{:action=>"profile", :birthday=>@birthday} do |f|%>
-			<%= f.submit 'Join', :style=>"position:absolute; left:510px; top:210px; width:50px; height:50px; color:#0B1907; overflow:visible" %>	    
+			<%= f.submit 'Join', :style=>"position:absolute; left:650px; top:210px; width:50px; height:50px; color:#0B1907; overflow:visible" %>	    
 		<%end%>
 	<%end%>
 	<div style="position:absolute; left:100px; top:350px; " ><%=link_to "Click here to search again",home_path%> </div>
@@ -18,7 +18,7 @@
 	</DIV>
 	<%unless current_user%>
 		<%=form_for :join, :url=>{:action=>"profile", :birthday=>@birthday} do |f|%>
-			<%= f.submit 'Join', :style=>"position:absolute; left:500px; top:180px; width:60px; height:60px; color:#0B1907; overflow:visible" %>	    
+			<%= f.submit 'Join', :style=>"position:absolute; left:600px; top:180px; width:60px; height:60px; color:#0B1907; overflow:visible" %>	    
 		<%end%>
 	<%end%>
 	<%unless current_user%>
