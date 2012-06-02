@@ -12,15 +12,15 @@ Will your description of yourself match up with others who share your birthday? 
 <table cellspacing=15>
 	<tr>
 		<th>Your Birthdate</th>
-		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth"></td>
+		<td><input type="text" class="datepick" id="date_of_birth" name="date_of_birth" size=25></td>
 	</tr>
 	<tr>
 		<th>Your Name</th>
-		<td><%= f.text_field :name, "size"=>23 %></td>
+		<td><%= f.text_field :name, "size"=>25 %></td>
 	</tr>
 	<tr>
 		<th>Your Email Address</th>
-		<td><%= f.text_field :email , "size"=>23 %></td><td><p class="alert"><font color="red"><%= alert %></font></p></td>
+		<td><%= f.text_field :email , "size"=>25 %></td><td><p class="alert"><font color="red"><%= alert %></font></p></td>
 	</tr>
 	<tr>
 		<th>Sex</th>
@@ -35,19 +35,19 @@ Will your description of yourself match up with others who share your birthday? 
 	</tr>
 	<tr>
 		<th>Where do you live?</th>
-		<td>Town/City <%= f.text_field :living_city, "size"=>15%></td>
+		<td>Town/City <%= f.text_field :living_city, "size"=>18%></td>
 	</tr>
 	<tr>
 		<th></th>
-		<td>Country <%= f.country_select :living_country %></td>
+		<td>Country &nbsp&nbsp&nbsp<%= f.country_select :living_country, "size"=>20%></td>
 	</tr>
 	<tr>
 		<th>Where do you Born?</th>
-		<td>Town/City <%= f.text_field :born_city, "size"=>15%></td>
+		<td>Town/City <%= f.text_field :born_city, "size"=>18%></td>
 	</tr>
 	<tr>
 		<th></th>
-		<td>Country <%= f.country_select :born_country %></td>
+		<td>Country &nbsp&nbsp&nbsp<%= f.country_select :born_country, "size"=>20 %></td>
 	</tr>
 	<tr>
 		<th></th>
