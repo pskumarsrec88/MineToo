@@ -1,4 +1,4 @@
- <%if @profile.present? %> 
+ <%if !@profile.blank? %> 
 <%p=@profile%>
 <div style="position:absolute; left:120px; top:115px; text-align: left ; font-family:'Arial'; font-size:10pt; color:#3366FF;" >
 <h2>Details about <%=p.name%></h2><br>
@@ -47,4 +47,6 @@
 	
 </table>
 </div>
+<%else%>
+not found
 <%end%>

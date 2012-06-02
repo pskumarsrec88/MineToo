@@ -1,10 +1,13 @@
 class HomeController < ApplicationController
-	
+  
+  #Filter for authentication  
   before_filter :authenticate_user!, :except => [:home, :homenotlogin, :profile, :quality, :sessions, :tellfriend, :invite, :profilesession]
 
+  #Application home page
   def home
   end
   
+  #Search action for birthday
   def homenotlogin
 	  unless params[:date_of_birth].empty?
 		@dob=params[:date_of_birth]
@@ -15,12 +18,13 @@ class HomeController < ApplicationController
 	  end
   end
 
-  #registration/profile
+  #User registration-profile
   def profile
         session[:value]=""
 	session[:qualities]=""
   end
 
+  #Action to store users profile details in sessions
   def profilesession
 	@a=User.find_by_email(params[:user][:email])
 	if @a.present?
@@ -32,13 +36,13 @@ class HomeController < ApplicationController
 	end
   end
 
-  #registration/quality
+  #User registration-quality
   def quality
 	  redirect_to "/signupprofile" if session[:value].empty?
 	  @quality=["considerate","boisterous","wise","relaxed","forward-looking","intense","indecisive","strong","grounded","emotional","demonstratitve","witty","unaffected","inscrutable","mercurial"]
   end
   
-  #registration/sessions
+  #Action to store users quality details in sessions
   def sessions
 	session[:qualities]=Array.new
 	if params[:user].present?
@@ -55,13 +59,15 @@ class HomeController < ApplicationController
 	end
   end
   
-  #Show profile
+  #Show user profile
   def showprofile
-	@profile=User.find(params[:id])
-	#@qualities=Quality.select("name").find(@profile.qualities)
+	@profile=User.find_by_id(params[:id]) 
+	redirect_to "/notfound" if @profile.blank?
+
+	
   end
 
-  #Exact birthday
+  #Action for search Exact birthday
   def birthday
 	  @dob=current_user.date_of_birth
 	  @dat=@dob.ctime
@@ -82,19 +88,22 @@ class HomeController < ApplicationController
 	@user=User.where(["(date_of_birth <= ? and date_of_birth>=?)",start_date,end_date])
   end
   
+  #Contact preference page
   def contact
   end
   
+  #Update contact preference
   def updatecontact
 	@user=User.find(current_user.id)
 	@user.update_attributes(params[:user])
 	redirect_to edit_user_registration_path
   end
 
+  #Myself update page
   def myself
-	  @user=User.new
   end
 
+  #Action for update user profile
   def myselfupdate
 	@user=User.find(current_user.id)
 	@result=@user.update_attributes(params[:user])
@@ -104,18 +113,20 @@ class HomeController < ApplicationController
 	end
   end
 
+  #Invite friend oage
   def tellfriend
   end
 
+  #Action for invite friend
   def invite
 	  @contact=params[:tell]
 	  Sendmail.tellfriend(@contact).deliver
   end
   
+  #Action to contact admin
   def adminmail
 	  @contact=params[:mail]
 	  Sendmail.contactadmin(@contact).deliver
   end
   
 end
-

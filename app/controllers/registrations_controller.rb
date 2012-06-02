@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
 
-  # GET /resource/sign_up
+  # Action for new biography
   def new
     if session[:value].present? and session[:qualities].present?
       build_resource({})
@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # POST /registration/biography
+  # Action for register biography
   def create      
     build_resource    
     if resource.save
@@ -29,10 +29,8 @@ class RegistrationsController < Devise::RegistrationsController
       @user.save
       session[:value]=""
       session[:qualities]=""
-      #email=resource.email
       password=session[:password].to_s
       Sendmail.sendpassword(resource.email,password).deliver
-      #sign_in_and_redirect(resource_name, resource)
     else
       clean_up_passwords(resource)
       render_with_scope :new

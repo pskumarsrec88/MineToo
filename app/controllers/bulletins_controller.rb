@@ -1,9 +1,14 @@
 class BulletinsController < ApplicationController
 	
+	#Filter for authentication
 	before_filter :authenticate_user!
-	def sendbulletin		
+	
+	#Action new bulletin message
+	def sendbulletin
+		@mesg= Bulletin.new
 	end
 	
+	#Action to find bulletin message for particular user's date of birth
 	def find
 		@mesg=Bulletin.all(:conditions => ["birth_date = ?", current_user.date_of_birth], :order => "created_at DESC")
 		if @mesg.present?
@@ -14,16 +19,7 @@ class BulletinsController < ApplicationController
 		end
 	end
 	
-	
-	def aftersendbulletin
-		find
-	end
-	
-	def showbulletin
-		
-		find
-	end
-	
+	#Action for post bulletin message
 	def sendmessage
 		@msg= Bulletin.new(params[:message])
 		unless params[:message][:message].empty?
@@ -34,5 +30,16 @@ class BulletinsController < ApplicationController
 			render :sendbulletin
 		end
 	end
+	
+	#Action for after post bulletin message
+	def aftersendbulletin
+		find
+	end
+	
+	#Action for show bulletin message
+	def showbulletin
+		find
+	end
+	
 	
 end

@@ -48,6 +48,7 @@ Devise::Application.routes.draw do
   match '/paradox' => 'static#paradox'
   match '/terms' => 'static#terms'
   match '/logout' => 'static#logoutsuccess'
+  match '/notfound' => 'static#notfound'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
