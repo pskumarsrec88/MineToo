@@ -5,13 +5,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    if session[:value].empty?
-      redirect_to "/signupprofile" 
-    elsif session[:qualities].empty?
-      redirect_to "/signupquality"	    
-    else
+    if session[:value].present? and session[:qualities].present?
       build_resource({})
-      render_with_scope :new
+      render_with_scope :new	
+    elsif session[:value].present?
+      redirect_to "/signupquality"  
+    else
+      redirect_to "/signupprofile"
     end
   end
 
