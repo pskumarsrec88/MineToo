@@ -5,8 +5,14 @@ class RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    build_resource({})
-    render_with_scope :new
+    if session[:value].empty?
+      redirect_to "/signupprofile" 
+    elsif session[:qualities].empty?
+      redirect_to "/signupquality"	    
+    else
+      build_resource({})
+      render_with_scope :new
+    end
   end
 
   # POST /registration/biography
@@ -21,6 +27,8 @@ class RegistrationsController < Devise::RegistrationsController
       @user.private_message_notification="1"
       @user.offers_notification="1"
       @user.save
+      session[:value]=""
+      session[:qualities]=""
       #email=resource.email
       password=session[:password].to_s
       Sendmail.sendpassword(resource.email,password).deliver

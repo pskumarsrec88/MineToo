@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	
   before_filter :authenticate_user!, :except => [:home, :homenotlogin, :profile, :quality, :sessions, :tellfriend, :invite, :profilesession]
-  
+
   def home
   end
   
@@ -17,7 +17,8 @@ class HomeController < ApplicationController
 
   #registration/profile
   def profile
-        
+        session[:value]=""
+	session[:qualities]=""
   end
 
   def profilesession
@@ -33,6 +34,7 @@ class HomeController < ApplicationController
 
   #registration/quality
   def quality
+	  redirect_to "/signupprofile" if session[:value].empty?
 	  @quality=["considerate","boisterous","wise","relaxed","forward-looking","intense","indecisive","strong","grounded","emotional","demonstratitve","witty","unaffected","inscrutable","mercurial"]
   end
   
@@ -40,7 +42,7 @@ class HomeController < ApplicationController
   def sessions
 	session[:qualities]=Array.new
 	if params[:user].present?
-	params[:user].values.each do |a|	
+	params[:user].values.each do |a|
 		session[:qualities]<<a     
 	end
 	end
@@ -114,7 +116,6 @@ class HomeController < ApplicationController
 	  @contact=params[:mail]
 	  Sendmail.contactadmin(@contact).deliver
   end
-
   
 end
 
