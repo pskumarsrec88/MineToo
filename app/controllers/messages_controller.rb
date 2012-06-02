@@ -38,7 +38,12 @@ class MessagesController < ApplicationController
 	#Action for show single user's messages
 	def aftershow
 		@sender=params[:id]
-		@name=User.find_by_id(params[:id]).name
-		@msg=Message.all(:conditions => ["user_id = ? AND receiver = ?", @sender, current_user.id], :order => "created_at DESC")
+		@uname=User.find_by_id(params[:id])
+		if @uname.blank?
+		    redirect_to "/notfound" 
+		else
+		   @name=@uname.name
+		   @msg=Message.all(:conditions => ["user_id = ? AND receiver = ?", @sender, current_user.id], :order => "created_at DESC")
+		end
 	end
 end
