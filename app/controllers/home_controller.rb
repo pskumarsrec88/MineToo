@@ -13,8 +13,8 @@ class HomeController < ApplicationController
 		@dob=params[:date_of_birth]
 		@user=User.find_all_by_date_of_birth(@dob)	
 	  else
-			flash[:alert] = "Please select Date of birth"
-			render :home
+		flash[:alert] = "Please select Date of birth"
+		render :home
 	  end
   end
 

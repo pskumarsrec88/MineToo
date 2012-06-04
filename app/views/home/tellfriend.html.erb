@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"">
 <script>
      $(function() {
@@ -19,11 +21,11 @@
 <table cellspacing=15>
 	<tr>
 		<td>Your friend name</td>
-		<td><%= text_field :tell, :name, "size" => 20 %></td>
+		<td><%= text_field :tell, :name, "size" => 20 %><font color="red">*</font></td>
 	</tr>
 	<tr>
 		<td>Your friend E_mail</td>
-		<td><%= text_field :tell,  :email, "size" => 20 %></td>
+		<td><%= text_field :tell,  :email, "size" => 20 %><font color="red">*</font></td>
 	</tr>
 	<tr>
 		<td>Birth date (optional)</td>
@@ -35,11 +37,11 @@
 	</tr>
 	<tr>
 		<td>Your name</td>
-		<td><%= text_field :tell,  :your_name, "size" => 20 %></td>
+		<td><%= text_field :tell,  :your_name, "size" => 20 %><font color="red">*</font></td>
 	</tr>
 	<tr>
 		<td>Your E_mail</td>
-		<td><%= text_field :tell,  :your_email, "size" => 20 %></td>
+		<td><%= text_field :tell,  :your_email, "size" => 20 %><font color="red">*</font></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -52,60 +54,50 @@
 
 <script type="text/javascript">
 function validateform(f){
+  errortext= "";
+  var npattern = /^[a-zA-Z]{2,15}$/;
+  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
   if (f.tell_name.value=="")
   {
-     alert("You must enter your friend name");
-     f.tell_name.focus();
-     return false;
+     errortext+="\nYou must enter your friend name";
+  }
+  var fname=f.tell_name.value;
+  if(!npattern.test(fname))
+  {
+      errortext+="\nFriend Name does not have Numbers";
   }
   if (f.tell_email.value=="")
   {
-     alert("You must enter your friend email ");
-     f.tell_email.focus();
-     return false;
+     errortext+="\nYou must enter your friend email ";
   }
-  
+  var fmail=f.tell_email.value;
+  if(!empattern.test(fmail))
+  {
+      errortext+="\nEnter vaild friend email ";
+  }
   if (f.tell_your_name.value=="")
   {
-     alert("You must enter your name");
-     f.tell_your_name.focus();
-     return false;
+     errortext+="\nYou must enter your name";
+  }
+  var yname=f.tell_your_name.value;
+  if(!npattern.test(yname))
+  {
+      errortext+="\nYour Name does not have Numbers";
   }
   if (f.tell_your_email.value=="")
   {
-     alert("You must enter your email");
-     f.tell_your_email.focus();
-     return false;
-  }
-  var empattern = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
-  var fmail=f.tell_email.value;
-  if(empattern.test(fmail)){}else
-  {
-      alert("Enter vaild friend email ");
-      f.tell_email.focus();
-      return false;
+     errortext+="\nYou must enter your email";
   }
   var ymail=f.tell_your_email.value;
-  if(empattern.test(ymail)){}else
+  if(!empattern.test(ymail))
   {
-      alert("Enter your vaild email ");
-      f.tell_your_email.focus();
-      return false;
+      errortext+="\nEnter your vaild email ";
+
   }
-  var npattern = /^[a-zA-Z]{2,15}$/;
-  var fname=f.tell_name.value;
-  if(npattern.test(fname)){}else
+   if (!errortext== "") 
   {
-      alert("Name does not have Numbers");
-      f.tell_name.focus();
-      return false;
-  }
-  var yname=f.tell_your_name.value;
-  if(npattern.test(yname)){}else
-  {
-      alert("Your Name does not have Numbers");
-      f.tell_your_name.focus();
-      return false;
+        alert("Error Message:" + errortext);
+        return false;
   }
 
 }

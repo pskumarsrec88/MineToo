@@ -12,7 +12,7 @@
 				<td><%=f.hidden_field :user_id, :value=>@sender%></td>
 				<td><%=f.hidden_field :receiver, :value=>@receiver.id%></td>
 				<td><%=f.label :message,"Message"%></td>			
-				<td><%=f.text_area :message, :size => '40x10'%></td>
+				<td><%=f.text_area :message, :size => '40x10'%><font color="red">*</font></td>
 			</tr>
 			<tr>
 				<td></td><td></td><td></td>

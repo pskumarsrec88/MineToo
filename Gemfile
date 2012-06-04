@@ -8,6 +8,11 @@ gem 'jquery_datepicker'
 gem 'heroku'
 gem 'pg'
 
+gem 'capybara'
+gem 'rspec'
+gem 'rspec-rails'
+gem 'shoulda'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

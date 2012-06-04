@@ -6,7 +6,7 @@
 <p>Now here's your chance to say something about yourself. <br>
 Please write at least four sentences about yourself.<br><br><br>
 <%session[:password]=(rand.*100000000.to_i).floor%>
-<%=f.text_area :biography, :rows=>10, :cols=>50%><br>
+<%=f.text_area :biography, :rows=>10, :cols=>50%><font color="red">*</font><br>
 <%=f.hidden_field :date_of_birth, :value=>session[:value][:date_of_birth]%>
 <%=f.hidden_field :name, :value=>session[:value][:name]%>
 <%=f.hidden_field :email, :value=>session[:value][:email]%>

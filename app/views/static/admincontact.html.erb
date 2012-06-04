@@ -8,7 +8,7 @@
 		<% else %>
 			<tr>
 				<th>From</th>
-				<td><%= text_field :mail, :from, "size" => 20%></td>
+				<td><%= text_field :mail, :from, "size" => 20%><font color="red">*</font></td>
 			</tr>
 		<% end %>
 		<tr>
@@ -17,11 +17,11 @@
 		</tr>
 		<tr>
 			<th>Subject</th>
-			<td><%= text_field :mail, :subject, "size" => 20%></td>
+			<td><%= text_field :mail, :subject, "size" => 20%><font color="red">*</font></td>
 		</tr>
 		<tr>
 			<th>Message</th>
-			<td><%=text_area :mail, :message, :rows=>10, :cols=>30 %></td>
+			<td><%=text_area :mail, :message, :rows=>10, :cols=>30 %><font color="red">*</font></td>
 		</tr>
 		<tr>
 			<th></th>

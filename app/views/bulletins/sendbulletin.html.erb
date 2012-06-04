@@ -8,7 +8,7 @@
 			<td><%=f.hidden_field :sender, :value=>current_user.id%></td>
 			<td><%=f.hidden_field :birth_date, :value=>current_user.date_of_birth%></td>
 			<td><%=f.label :message,"Message"%></td>			
-			<td><%=f.text_area :message, :size => '40x10'%></td>
+			<td><%=f.text_area :message, :size => '40x10'%><font color="red">*</font></td>
 		</tr>
 		<tr>
 			<td></td><td></td><td></td>

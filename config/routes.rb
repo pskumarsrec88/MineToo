@@ -8,7 +8,7 @@ Devise::Application.routes.draw do
  
   #Routes for Home controller
   match '/signupprofile' => 'home#profile'
-  match 'profilesession'  => 'home#profilesession'
+  match '/profilesession'  => 'home#profilesession'
   match '/signupquality' => 'home#quality'
   match '/signupqual' => 'home#sessions'
   match '/home' => 'home#home'
