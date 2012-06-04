@@ -11,5 +11,6 @@ describe Message do
 					:updated_at => "" 
 					)
 	end
+	it { should belong_to(:user)}			
  end
  

@@ -14,14 +14,16 @@ class BulletinsController < ApplicationController
 		if @mesg.present?
 			@sender=Array.new
 			@mesg.each do |send|
-				@sender<<User.find_by_id(send.sender).name
+				@sender<<User.find_by_id(send.user_id).name
 			end
 		end
 	end
 	
 	#Action for post bulletin message
 	def sendmessage
+		puts @msg.inspect
 		@msg= Bulletin.new(params[:message])
+		puts @msg.inspect
 		unless params[:message][:message].empty?
 			@msg.save
 			redirect_to "/aftersendbulletin"
